@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Ichigo Ichigo Island</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="css/vegas.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/SVG/favicon.svg">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .wrapper {
+            /* max-width: 1920px; */
+            margin: 0 auto;
+        }
+
+        .photobox#vegas2 {
+            display: none;
+        }
+
+        .wrapper>.photobox,
+        .blackArea {
+            left: 0;
+            width: 100%;
+            height: 1080px;
+            position: absolute;
+        }
+
+        .blackArea {
+            background: rgba(0, 0, 0, .3);
+        }
+
+        .vegas-content-scrollable {
+            overflow: hidden;
+        }
+
+        .front {
+            width: 100%;
+            height: 1080px;
+            position: relative;
+        }
+
+        .logo {
+            width: 400px;
+            position: absolute;
+            top: 23%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: .5s;
+        }
+
+        .logo:hover {
+            width: 425px;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            width: 300px;
+            height: 250px;
+            position: absolute;
+            top: 5%;
+            left: 0%;
+        }
+
+        .nav li a {
+            width: 140px;
+            display: block;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin: 10px 0;
+            text-align: center;
+            transition: 1s;
+            border: 1px solid transparent;
+            padding: 10px 15px;
+        }
+
+        .nav>li>.titleActive {
+            border: 1px solid white;
+        }
+
+        .nav li a:hover {
+            border: 1px solid white;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .intro {
+            position: absolute;
+            width: 400px;
+            text-align: center;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .intro h2 {
+            color: white;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            letter-spacing: 5px;
+            font-weight: 400;
+            font-size: 1.5rem;
+            transition: .5s;
+        }
+
+        .intro h2:hover {
+            font-size: 2rem;
+        }
+
+        .intro p {
+            color: white;
+            font-weight: 300;
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            margin-top: 70px;
+            animation: float 2s infinite;
+        }
+
+        .arrowDown {
+            width: 90px;
+            margin-bottom: 50px;
+            animation: float 2s infinite;
+        }
+
+        .button {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #F16361;
+            bottom: 0%;
+            right: 0%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            transition: .5s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #92B7B5;
+        }
+
+        .button img {
+            width: 40px;
+        }
+
+        .button p {
+            color: white;
+            font-weight: 200;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin: 5px 0 0 0;
+        }
+
+        .landing {
+            width: 100%;
+        }
+
+        .logoRed {
+            width: 400px;
+            margin: 30px 50px;
+        }
+
+        .welcome {
+            width: 100%;
+            height: 570px;
+            -webkit-writing-mode: vertical-lr;
+            writing-mode: vertical-lr;
+            position: relative;
+        }
+
+        .welcome h1 {
+            position: absolute;
+            top: 44%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            font-weight: 200;
+            font-size: 2.1rem;
+            letter-spacing: 5px;
+            cursor: default;
+        }
+
+        .textbox {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            margin-top: 60px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ticket {
+            width: 80px;
+            height: 57px;
+            position: absolute;
+            top: 55%;
+            left: 72%;
+            transform: translate(-50%, -50%);
+            transition: .5s;
+            z-index: 2;
+        }
+
+        .ticket:hover {
+            width: 90px;
+        }
+
+        .p {
+            position: absolute;
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column-reverse;
+            font-weight: 200;
+        }
+
+        .plants {
+            width: 980px;
+            height: 400px;
+            margin: 0 auto;
+            margin-top: 210px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tree1 {
+            width: 239px;
+            height: 376px;
+            transition: .5s;
+        }
+
+        .tree1:hover {
+            transform: scaleY(1.1);
+        }
+
+        .tree2 {
+            width: 200px;
+            height: 400px;
+            transition: .5s;
+        }
+
+        .tree2:hover {
+            transform: scaleY(1.1);
+        }
+
+        .grass {
+            width: 192px;
+            height: 100px;
+            position: absolute;
+            top: 75%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            transition: .5s;
+        }
+
+        .grass:hover {
+            width: 210px;
+        }
+
+        .local {
+            width: 100%;
+            height: 478px;
+            background: #F2E9A8;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-end;
+            padding: 40px 40px 110px 40px;
+        }
+
+        .local h3 {
+            font-weight: 400;
+            font-size: 1.6rem;
+            color: #B54F54;
+            letter-spacing: 3px;
+            margin: 10px 0 5px 0;
+        }
+
+        .peach,
+        .rose {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: .5s;
+            cursor: default;
+        }
+
+        .peach p,
+        .rose p {
+            color: #B54F54;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .peach:hover,
+        .rose:hover {
+            transform: scale(1.3, 1.3);
+        }
+
+        .peachPng {
+            width: 80px;
+        }
+
+        .rosePng {
+            width: 180px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(-55px);
+            }
+
+            50% {
+                transform: translateY(-40px);
+            }
+        }
+
+
+        .bubble {
+            width: 320px;
+            position: relative;
+            text-align: center;
+            transform: translateY(-55px);
+            animation: float 2s infinite;
+            cursor: default;
+        }
+
+        .bubbleText {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .bubbleText h4 {
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            margin: 10px 0;
+            color: #92B7B5;
+        }
+
+        .bubbleText p {
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin: 0;
+            color: #92B7B5;
+        }
+
+        .bubblePng {
+            width: 100%;
+        }
+
+        footer {
+            width: 100%;
+            height: 150px;
+            background: #B54F54;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 200;
+            letter-spacing: 5px;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .wrapper {
+                /* min-width: 575px; */
+                overflow: hidden;
+            }
+
+            .photobox#vegas2 {
+                display: none;
+            }
+
+            .wrapper>.photobox,
+            .blackArea {
+                height: 600px;
+            }
+
+            .front {
+                height: 600px;
+            }
+
+            img.logo {
+                width: 200px;
+                top: 20%;
+                left: 50%;
+            }
+
+            .logo:hover {
+                width: 230px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .transition {
+                transition: .5s;
+            }
+
+            .menu {
+                display: inline-block;
+                cursor: pointer;
+                position: relative;
+                padding: 0 0 0 2px;
+                top: 5%;
+                left: 95%;
+                transform: translate(-50%, -50%);
+
+            }
+
+            menu.active {
+                background: #fff;
+            }
+
+            .menu ul {
+                position: absolute;
+                top: 60px;
+                left: -100px;
+                opacity: 0;
+                max-height: 0;
+                overflow: hidden;
+            }
+
+            .menu.active ul {
+                opacity: 1;
+                max-height: 400px;
+            }
+
+            .menu ul li a {
+                width: 140px;
+                display: block;
+                text-decoration: none;
+                color: white;
+                font-size: 1.2rem;
+                font-weight: 200;
+                margin: 15px 0;
+                text-align: center;
+                transition: 1s;
+                border: 1px solid transparent;
+                padding: 10px 15px;
+            }
+
+            .menu ul li a:hover {
+                border: 1px solid white;
+            }
+
+            ul,
+            li {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .menu>ul>li>.titleActive {
+                border: 1px solid white;
+            }
+
+            .menu li a:hover {
+                border: 1px solid white;
+            }
+
+            .bar {
+                width: 38px;
+                height: 5px;
+                background: white;
+                margin: 6px 0;
+                border-radius: 2px;
+            }
+
+            .active .bar1 {
+                -webkit-transform: rotate(-45deg) translate(-9px, 7px);
+                transform: rotate(-45deg) translate(-9px, 7px);
+            }
+
+            .active .bar2 {
+                opacity: 0;
+            }
+
+            .active .bar3 {
+                -webkit-transform: rotate(45deg) translate(-9px, -8px);
+                transform: rotate(45deg) translate(-9px, -8px);
+            }
+
+            .intro {
+                width: 280px;
+            }
+
+            .intro h2 {
+                font-size: 1.2rem;
+            }
+
+            .intro h2:hover {
+                font-size: 1.4rem;
+            }
+
+            .intro p {
+                font-size: 1rem;
+            }
+
+            .arrowDown {
+                width: 70px;
+            }
+
+            .landing {
+                min-width: 576px;
+            }
+
+            .welcome {
+                height: 590px;
+            }
+
+            .logoRed {
+                width: 300px;
+            }
+
+            .local {
+                height: 960px;
+            }
+
+            .textbox {
+                top: 44%;
+            }
+
+            .plants {
+                width: 565px;
+                height: 210px;
+                margin-top: 290px;
+                top: 45%;
+            }
+
+            .tree1 {
+                width: 120px;
+                height: 186px;
+            }
+
+            .tree2 {
+                width: 100px;
+                height: 200px;
+            }
+
+            .grass {
+                width: 114px;
+                height: 60px;
+                top: 67%;
+                left: 32%;
+            }
+
+            .grass:hover {
+                width: 125px;
+            }
+
+            .ticket {
+                display: none;
+            }
+
+            .local {
+                width: 100%;
+                height: 900px;
+                background: #F2E9A8;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                padding: 120px 40px 120px 40px;
+            }
+
+            .bubble {
+                width: 430px;
+                order: -1;
+                top: 5%;
+            }
+
+            .bubbleText h4 {
+                font-size: 1.8rem;
+                font-weight: 200;
+            }
+
+            .bubbleText p {
+                font-size: 1.3rem;
+            }
+
+            .peach:hover,
+            .rose:hover {
+                transform: scale(1.4, 1.4);
+            }
+
+            footer {
+                height: 100px;
+                font-size: 0.6rem;
+                font-weight: 200;
+                letter-spacing: 4px;
+                line-height: 1.6rem;
+                padding: 30px 150px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .wrapper {
+                min-width: 375px;
+                overflow: hidden;
+            }
+
+            .photobox#vegas1 {
+                display: none;
+            }
+
+            .photobox#vegas2 {
+                display: block;
+            }
+
+            .wrapper>.photobox,
+            .blackArea {
+                height: 812px;
+            }
+
+            .vegas-animation-kenburns {
+                animation: kenburns ease-out;
+            }
+
+            @keyframes kenburns {
+                0% {
+                    transform: scale(1.2);
+                }
+
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            .front {
+                height: 812px;
+            }
+
+            img.logo {
+                width: 150px;
+                top: 18%;
+                left: 50%;
+            }
+
+            .logo:hover {
+                width: 155px;
+            }
+
+
+            .menu {
+                top: 4%;
+                left: 90%;
+            }
+
+            .menu ul {
+                left: -40px;
+            }
+
+            .menu ul li a {
+                width: 90px;
+                font-size: 1rem;
+                font-weight: 200;
+                margin: 12px 0;
+                padding: 5px 5px;
+            }
+
+            .menu ul li a:active {
+                border: 1px solid white;
+            }
+
+            .bar {
+                width: 35px;
+            }
+
+            .intro p {
+                margin-top: 85px;
+            }
+
+            .button {
+                right: -7%;
+            }
+
+            .landing {
+                min-width: 375px;
+            }
+
+            .logoRed {
+                width: 300px;
+                margin: 30px 40px;
+            }
+
+            .textbox {
+                width: 360px;
+                top: 42%;
+            }
+
+            .welcome h1 {
+                font-size: 1.9rem;
+                left: 92%;
+            }
+
+            .plants {
+                width: 360px;
+                height: 210px;
+            }
+
+            .local {
+                height: 750px;
+                padding: 100px 40px 100px 40px;
+            }
+
+            .bubble {
+                width: 300px;
+            }
+
+            .bubbleText h4 {
+                font-size: 1.3rem;
+            }
+
+            .bubbleText p {
+                font-size: 0.8rem;
+            }
+
+            .peach:hover,
+            .rose:hover {
+                transform: scale(1.3, 1.3);
+            }
+
+            footer {
+                height: 100px;
+                font-size: 0.5rem;
+                letter-spacing: 2px;
+                line-height: 1.6rem;
+                padding: 30px 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="photobox" id="vegas1"></div>
+        <div class="photobox" id="vegas2"></div>
+        <div class="blackArea"></div>
+        <div class="front">
+            <img class="logo" src="images/SVG/Logo-white.svg">
+            <ul class="nav">
+                <li><a href="index.html" class="link titleActive">初見苺苺</a></li>
+                <li><a href="page1.html" class="link">島嶼導覽</a></li>
+                <li><a href="page2.html" class="link">居民介紹</a></li>
+                <li><a href="page3.html" class="link">島嶼記事</a></li>
+            </ul>
+            <div class="menu transition">
+                <div class="bar bar1 transition"></div>
+                <div class="bar bar2 transition"></div>
+                <div class="bar bar3 transition"></div>
+                <ul class="transition">
+                    <li><a href="index.html" class="link titleActive">初見苺苺</a></li>
+                    <li><a href="page1.html" class="link transition">島嶼導覽</a></li>
+                    <li><a href="page2.html" class="link transition">居民介紹</a></li>
+                    <li><a href="page3.html" class="link transition">島嶼記事</a></li>
+                </ul>
+            </div>
+            <div class="intro" id="goNext">
+                <h2>ようこそ、苺苺島へ!</h2>
+                <p>SCROLL</p>
+                <img class="arrowDown" src="images/SVG/arrow-down.svg">
+            </div>
+            <div class="button" id="goTop">
+                <img class="arrowUp" src="images/SVG/arrow-up.svg">
+                <p>TOP</p>
+            </div>
+        </div>
+
+        <div class="landing">
+            <div class="welcome">
+                <img class="logoRed" src="images/SVG/Logo-red.svg">
+                <div class="textbox">
+                    <h1>歡迎來到苺苺島</h1>
+                    <div class="p">
+                        <p>各位貴賓，本班機即將降落，</p>
+                        <p> 請將安全帶繫緊，</p>
+                        <p> 豎直椅背、收好桌子，</p>
+                        <p> 並記得帶上您的隨身行李。</p>
+                        <p> 非常感謝您的搭乘，</p>
+                        <p> 期待下次與您相見。</p>
+                    </div>
+                </div>
+                <div class="plants">
+                    <img class="tree1" src="images/index/tree1.png">
+                    <img class="grass" src="images/index/grass.png">
+                    <img class="ticket" src="images/index/ticket.png">
+                    <img class="tree2" src="images/index/tree2.png">
+                </div>
+            </div>
+            <div class="local">
+                <div class="peach">
+                    <img class="peachPng" src="images/index/peach.png">
+                    <h3>水蜜桃</h3>
+                    <p>Peaches</p>
+                </div>
+                <div class="bubble">
+                    <img class="bubblePng" src="images/SVG/bubble-white.svg">
+                    <div class="bubbleText">
+                        <h4>苺苺島特產</h4>
+                        <p>Local Specialties</p>
+                    </div>
+                </div>
+                <div class="rose">
+                    <img class="rosePng" src="images/SVG/roses.svg">
+                    <h3>玫瑰花</h3>
+                    <p>Roses</p>
+                </div>
+            </div>
+        </div>
+        <footer>Copyright© 2020 Ichigo Ichigo Island. All rights reserved.</footer>
+    </div>
+
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="js/vegas.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        $("#goTop").click(function () {
+            console.log("go")
+            // $("html").scrollTop(0);
+            $("html").animate({
+                scrollTop: 0
+            })
+        })
+
+        $("#goNext").click(function () {
+            let nextPosition = $(".logoRed").offset().top;
+        // console.log(nextPosition)
+            $("html").animate({
+                scrollTop: nextPosition
+            })
+        })
+
+        $("a.link").hover(function (event) {
+            $("a.titleActive").removeClass("titleActive")
+        })
+
+        $("a.link").mouseleave(function (event) {
+            $("a.link").eq(0).addClass("titleActive")
+        })
+
+        $(".menu ul li a.link").hover(function (event) {
+            $(".menu ul li a.titleActive").removeClass("titleActive")
+        })
+
+        $(".menu ul li a.link").mouseleave(function (event) {
+            $(".menu ul li a.link").eq(0).addClass("titleActive")
+        })
+
+        $(".photobox#vegas1").vegas({
+            timer: false,
+            delay: 4000,
+            firstTransitionDuration: 50,
+
+            slides: [
+                { src: "images/index/pic1.jpg" },
+                { src: "images/index/pic2.jpg" },
+                { src: "images/index/pic3.jpg" },
+                { src: "images/index/pic4.jpg" },
+                { src: "images/index/pic5.jpg" }
+            ],
+            transition: 'blur',
+            animation: 'kenburns'
+        });
+
+        $(".photobox#vegas2").vegas({
+            timer: false,
+            delay: 4000,
+            firstTransitionDuration: 50,
+
+            slides: [
+                { src: "images/index/pic1-1.jpg" },
+                { src: "images/index/pic2-1.jpg" },
+                { src: "images/index/pic3-1.jpg" },
+                { src: "images/index/pic4-1.jpg" },
+                { src: "images/index/pic5-1.jpg" }
+            ],
+            transition: 'blur',
+            animation: 'kenburns'
+        });
+
+
+        $(".menu").click(function () {
+            $(this).toggleClass('active');
+        });
+
+    </script>
+</body>
+
+</html>
